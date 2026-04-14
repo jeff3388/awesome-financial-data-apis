@@ -137,6 +137,11 @@ data = pdr.get_data_stooq('AAPL', start='2020-01-01', end='2024-01-01')
 - **Python**: `pip install sec-api` (third-party wrapper) or use the official EDGAR APIs directly
 - **Note**: The official EDGAR XBRL API (`data.sec.gov/api/xbrl/`) provides structured financial data for all public U.S. companies. This is the authoritative source for financial statements.
 
+**[13F Insight](https://13finsight.com/?utm_source=github&utm_medium=referral&utm_campaign=seo_outreach_20260414&utm_content=jeff3388_awesome-financial-data-apis)**
+- **Focus**: Institutional holdings research from SEC 13F filings
+- **Data**: Manager portfolios, holding-level changes, filing history, and conviction tracking
+- **Note**: Useful when you want investor-friendly workflows on top of raw SEC filings, especially for hedge fund and institutional ownership research.
+
 ```python
 import requests
 # Get all 10-K filings for Apple
