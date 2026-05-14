@@ -264,6 +264,22 @@ calls = opt.calls
 puts = opt.puts
 ```
 
+**[Sharpe Free API](https://www.sharpe.ai/docs/free-api)**
+- **Free**: Public no-key endpoints for lightweight use; authenticated v1 API available for higher limits
+- **Data**: Crypto funding rates, perpetual futures, options analytics, spot-perp arbitrage, narratives, and news
+- **Python**: No dedicated package required; use `requests`
+- **Note (verified 2026-05)**: The funding rates endpoint returned JSON without authentication.
+
+```python
+import requests
+
+resp = requests.get(
+    "https://www.sharpe.ai/api/funding/rates",
+    params={"type": "current"},
+)
+funding_rates = resp.json()
+```
+
 ---
 
 ## Alternative Data
