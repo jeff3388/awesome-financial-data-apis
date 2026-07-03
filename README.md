@@ -35,6 +35,7 @@
 | FRED (St. Louis Fed) | ✅ Unlimited | N/A | ❌ | ✅ | ✅ | 🟢 Active |
 | yfinance (Yahoo) | ✅ Unofficial | ❌ | ✅ | ❌ | ✅ | 🟡 Unstable |
 | SEC EDGAR | ✅ Unlimited | N/A | ✅ | ❌ | ✅ | 🟢 Active |
+| FilingFirehose | ✅ Free tier | N/A | ✅ (events) | ❌ | ✅ | 🟢 Active |
 | Tiingo | ✅ 500 req/hour | ❌ | ✅ | ❌ | ✅ | 🟢 Active |
 | IEX Cloud | ✅ Limited | ✅ (paid) | ✅ (paid) | ❌ | ✅ | 🟢 Active |
 | Nasdaq Data Link | ✅ Some datasets | N/A | ✅ (paid) | ✅ | ✅ | 🟢 Active |
@@ -162,6 +163,21 @@ import simfin as sf
 sf.set_api_key('free')  # Free key for basic access
 sf.set_data_dir('~/simfin_data/')
 income = sf.load_income(variant='annual', market='us')
+```
+
+---
+
+**[FilingFirehose](https://filingfirehose.com/)**
+- **Free**: Ticker-level API for SEC EDGAR filings (8-K, 10-K, 10-Q, S-3) with red-flag risk scoring on top — going-concern, restatement, cyber (Item 1.05), officer departure, dilution
+- **Paid**: $49 per-ticker AI analysis report; $9/mo daily digest
+- **Note**: Value-add layer over raw EDGAR — classification, MCP endpoint, and event-driven webhooks. Companion open-source classifier at [buried-events-parser](https://github.com/jaablon/buried-events-parser) (MIT). Useful when you want structured *events* out of filings rather than raw XBRL facts.
+
+```python
+import requests
+# Get scored 8-K events for a ticker
+r = requests.get("https://filingfirehose.com/api/sec/AAPL")
+for filing in r.json()["filings"]:
+    print(filing["form"], filing["risk_flags"], filing["filed_at"])
 ```
 
 ---
