@@ -327,7 +327,19 @@ macro = obb.economy.fred_series(symbol="GS10", provider="fred")
 
 ---
 
-## Data Validation & Quality Tools
+**[AgentServices](https://agentservices.to)**
+- **Free**: 5 free API calls/month; paid via x402 on-chain micropayments (~$0.01/call)
+- **Data**: 54 crypto/market data services — prices, on-chain analytics, DeFi TVL, whale tracking, NFT floor prices, gas estimates, and more
+- **MCP**: Native Model Context Protocol server with 37 tools for AI agent integration
+- **Payments**: x402 protocol (HTTP 402) — agents pay per-request with USDC on Base; no API keys or subscriptions required
+- **Python**: `pip install agentservices` or MCP integration
+- **Note**: First production x402-enabled financial data API. Built for agent-native consumption — AI agents discover, negotiate, and pay for data autonomously.
+
+---
+
+## Data Validation ---
+
+## Data Validation & Quality Tools Quality Tools
 
 **Common data quality issues to check for:**
 - Dividend/split adjustment gaps
