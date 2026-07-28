@@ -40,6 +40,7 @@
 | Nasdaq Data Link | ✅ Some datasets | N/A | ✅ (paid) | ✅ | ✅ | 🟢 Active |
 | OpenBB Platform | ✅ Aggregator | Depends | Depends | Depends | ✅ | 🟢 Active |
 | Bloomberg Terminal | ❌ Paid only | ✅ | ✅ | ✅ | ✅ | 🟢 Institutional |
+| SiftingIO | ✅ Limited | ✅ | ✅ | ❌ | ✅ | 🟢 Active |
 
 ---
 
@@ -115,6 +116,17 @@ data = pdr.get_data_stooq('AAPL', start='2020-01-01', end='2024-01-01')
 ```
 
 ---
+
+**[SiftingIO](https://sifting.io/)**
+- **Free**: 10,000 API requests/month, 1 WebSocket connection, up to 5 concurrent symbols
+- **Data**: Real-time and historical US stocks, forex, cryptocurrencies, commodities, and DEX
+- **Python**: `pip install siftingio`
+
+```python
+from siftingio import SiftingClient
+client = SiftingClient(api_key="sft_...")
+trade = client.last.trade("crypto", "BTCUSD")
+```
 
 ### Paid (Institutional/Professional)
 
