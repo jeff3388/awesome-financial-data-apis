@@ -268,6 +268,11 @@ puts = opt.puts
 
 ## Alternative Data
 
+**[Funding Signals](https://fundingsignals.net/?utm_source=github&utm_medium=readme&utm_campaign=awesome-financial-data-apis)**
+- **Free**: Free tier available, paid tiers for real-time/contacts/export
+- **Data**: Scores and surfaces private-company SEC Form D filings (private funding rounds) within hours of filing — a private-market complement to public-market feeds like Alpha Vantage/Polygon above
+- **Use case**: Sales/VC prospecting, private-market funding trend tracking
+
 **[NewsAPI](https://newsapi.org/)**
 - **Free**: 100 requests/day for developers
 - **Data**: Financial news headlines and articles
