@@ -39,6 +39,7 @@
 | IEX Cloud | ✅ Limited | ✅ (paid) | ✅ (paid) | ❌ | ✅ | 🟢 Active |
 | Nasdaq Data Link | ✅ Some datasets | N/A | ✅ (paid) | ✅ | ✅ | 🟢 Active |
 | OpenBB Platform | ✅ Aggregator | Depends | Depends | Depends | ✅ | 🟢 Active |
+| AxionQuant | ✅ 1,000 calls/mo | ❌ (daily/hourly) | ✅ | ✅ | ✅ | 🟢 Active |
 | Bloomberg Terminal | ❌ Paid only | ✅ | ✅ | ✅ | ✅ | 🟢 Institutional |
 
 ---
@@ -324,6 +325,22 @@ macro = obb.economy.fred_series(symbol="GS10", provider="fred")
 **[financedatabase](https://github.com/JerBouma/FinanceDatabase)**
 - **Free**: Database of 300,000+ financial instruments with metadata
 - **Use case**: Discovering tickers by sector, country, market cap
+
+---
+
+**[AxionQuant](https://axionquant.com/)**
+- **Free**: 1,000 API calls/month, 1 year of historical data, all 16 data categories included
+- **Data**: Unified API covering market prices (stocks, ETFs, forex, futures, indices, crypto), fundamentals (financial statements, earnings, SEC disclosures/filings, profiles, insiders), macroeconomic indicators, and alternative data (ESG, credit, supply chain, sentiment, news, web traffic)
+- **Python**: `pip install axionquant-sdk`
+- **Note**: Normalized, cross-asset data built for long-horizon research and quantitative modeling. SDKs for Python, JavaScript/TypeScript, and C, plus an MCP server for LLM agents. Paid plans (Starter $49.99/mo, Pro $199.99/mo) extend history to 25+ years and raise call limits. Requires TensorFlow at install (no wheel for Python 3.13+); works on Python 3.10–3.12.
+
+```python
+from axion import Axion
+client = Axion(api_key='YOUR_API_KEY')
+quote = client.stocks.quote('AAPL')            # current price
+prices = client.stocks.prices('AAPL', frame='daily')
+snapshot = client.financials.snapshot('AAPL')  # fundamentals
+```
 
 ---
 
