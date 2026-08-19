@@ -287,6 +287,29 @@ pytrends.build_payload(['NVDA', 'AMD'], timeframe='today 12-m')
 interest = pytrends.interest_over_time()
 ```
 
+**[Congress Trading Pipeline](https://github.com/seralifatih/congress-trading-pipeline)**
+
+- **Free**: Runs on Apify's free monthly usage credit; pay-per-result after that ($2–3 per 1,000 results)
+- **Data**: US House and Senate congressional stock trading disclosures (STOCK Act PTRs), parsed directly from official Senate EFD and House Clerk sources — no third-party aggregators
+- **Python**: `pip install apify-client`
+- **Note**: Not real-time — filings carry their own statutory disclosure lag (up to 45 days). House and Senate pipelines use different field names (documented in the repo README).
+
+```python
+from apify_client import ApifyClient
+
+client = ApifyClient('YOUR_APIFY_TOKEN')
+
+# Senate PTRs
+run = client.actor('seralifatih/congress-trading-pipeline').call()
+for item in client.dataset(run['defaultDatasetId']).iterate_items():
+    print(item)
+
+# House PTRs
+run = client.actor('seralifatih/congress-trading-pipeline-1').call()
+for item in client.dataset(run['defaultDatasetId']).iterate_items():
+    print(item)
+```
+
 ---
 
 ## Python Client Libraries
