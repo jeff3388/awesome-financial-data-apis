@@ -152,6 +152,21 @@ xbrl = requests.get(xbrl_url, headers={"User-Agent": "your@email.com"}).json()
 
 ---
 
+
+**[edgar-geo-revenue](https://github.com/Metricshour/edgar-geo-revenue)**
+- **Free**: Completely free, no API key
+- **Data**: Geographic revenue breakdowns from SEC EDGAR 10-K filings (country/region segments)
+- **Python**: `pip install edgar-geo-revenue`
+- **Note**: Focused extractor for geo revenue notes in 10-Ks when XBRL geographic tags are incomplete. Docs: https://metricshour.github.io/edgar-geo-revenue/
+
+```python
+import edgar_geo_revenue as egr
+egr.set_user_agent("Your Name your@email.com")
+egr.fetch_geo_revenue("AAPL")
+```
+
+---
+
 **[Simfin](https://simfin.com/)**
 - **Free**: Income statement, balance sheet, cash flow for US equities (bulk download)
 - **Python**: `pip install simfin`
@@ -297,6 +312,7 @@ interest = pytrends.interest_over_time()
 | `pandas-datareader` | Multi-source data reader | `pip install pandas-datareader` | 🟡 Some sources deprecated |
 | `fredapi` | FRED official wrapper | `pip install fredapi` | 🟢 Stable |
 | `alpha_vantage` | Alpha Vantage client | `pip install alpha_vantage` | 🟢 Stable |
+| `edgar-geo-revenue` | Geographic revenue from SEC 10-Ks | `pip install edgar-geo-revenue` | 🟢 Active |
 | `polygon-api-client` | Polygon.io official | `pip install polygon-api-client` | 🟢 Stable |
 | `simfin` | SimFin fundamentals | `pip install simfin` | 🟢 Stable |
 | `tiingo` | Tiingo client | `pip install tiingo` | 🟢 Stable |
