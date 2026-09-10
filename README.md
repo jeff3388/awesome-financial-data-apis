@@ -325,6 +325,8 @@ macro = obb.economy.fred_series(symbol="GS10", provider="fred")
 - **Free**: Database of 300,000+ financial instruments with metadata
 - **Use case**: Discovering tickers by sector, country, market cap
 
+- **[DUEL](https://duelstocks.com)** - **Free**: Compare any two US-listed stocks head-to-head on 8 fundamentals computed directly from SEC EDGAR filings (10-K/10-Q); 5 comparisons/day on the free tier - **Use case**: Quick relative comparison between two companies without building your own SEC EDGAR data pipeline - **Open source**: Base scoring algorithm on GitHub ([duel-algorithm](https://github.com/duelstocks/duel-algorithm))
+
 ---
 
 ## Data Validation & Quality Tools
