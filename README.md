@@ -33,6 +33,7 @@
 | Alpha Vantage | ✅ 25 req/day | ❌ (15-min delay) | ✅ | ✅ | ✅ | 🟢 Active |
 | Polygon.io | ✅ Limited | ✅ (paid) | ✅ (paid) | ❌ | ✅ | 🟢 Active |
 | FRED (St. Louis Fed) | ✅ Unlimited | N/A | ❌ | ✅ | ✅ | 🟢 Active |
+| Invokely (MCP) | ✅ 500 MCP calls/month | ❌ | ❌ | ✅ | ✅ (MCP SDK) | 🟢 Active |
 | yfinance (Yahoo) | ✅ Unofficial | ❌ | ✅ | ❌ | ✅ | 🟡 Unstable |
 | SEC EDGAR | ✅ Unlimited | N/A | ✅ | ❌ | ✅ | 🟢 Active |
 | Tiingo | ✅ 500 req/hour | ❌ | ✅ | ❌ | ✅ | 🟢 Active |
@@ -222,6 +223,29 @@ import requests, json
 headers = {'Content-type': 'application/json'}
 data = json.dumps({"seriesid": ["CUUR0000SA0", "CWUR0000SA0"], "startyear": "2020", "endyear": "2026"})
 resp = requests.post('https://api.bls.gov/publicAPI/v2/timeseries/data/', data=data, headers=headers)
+```
+
+---
+
+**[Invokely](https://invokely.ai/docs)** (official statistics MCP server)
+- **Free**: 500 MCP calls/month on the no-card Free plan; a no-account trial allows 25 calls/day/IP. REST data endpoints require Builder, Pro, or prepaid credits; the catalog and CSV export remain available on all plans with an API key.
+- **Data**: Official statistics including GDP, prices, labor, income and public finance. Coverage varies by indicator: the United States by state and county, EU countries and regions, Spain down to municipalities, plus national and regional series from statistics offices in the UK, Canada, Australia, Ireland and New Zealand, and World Bank data for every country and the world.
+- **Python**: `pip install mcp==2.2.0` (MCP SDK)
+- **Note**: Each figure's source block includes the source URL, retrieval date and citation. Verified 2026-10 with Python 3.14.7.
+
+```python
+import asyncio
+from mcp import Client
+
+async def main():
+    async with Client("https://invokely.ai/mcp/trial") as client:
+        result = await client.call_tool(
+            "get_value",
+            {"indicator": "gdp_usd", "place": "United States"},
+        )
+        print(result.structured_content)
+
+asyncio.run(main())
 ```
 
 ---
