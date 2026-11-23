@@ -127,6 +127,20 @@ data = pdr.get_data_stooq('AAPL', start='2020-01-01', end='2024-01-01')
 **[FactSet](https://www.factset.com/)**
 - Strong for fundamental data, estimates, and consensus data. Python SDK available.
 
+**[Taiwan Stocks Post-Market (Apify Actor)](https://apify.com/o19750120/taiwan-stock-post-market-flows)**
+- **Free**: No free tier of its own. Paid per row (US$0.003 per row plus a small start fee); needs an Apify account, and Apify's free plan credit covers small runs.
+- **Data**: Every TWSE and TPEx common stock after the close: price, turnover, margin and short balances, TPEx institutional (foreign, trust, dealer) net flows, attention flags, sector indexes and top-20 rankings. Built from TWSE and TPEx official open data.
+- **Python**: `pip install apify-client`
+- **Note**: End-of-day only, 1-2 trading days behind the exchanges; descriptive numbers, no signals. Useful if you need Taiwan market data in one English schema instead of the exchanges' separate Chinese endpoints.
+
+```python
+from apify_client import ApifyClient
+client = ApifyClient('YOUR_APIFY_TOKEN')
+run = client.actor('o19750120/taiwan-stock-post-market-flows').call(
+    run_input={'kind': 'ranking', 'market': 'TPEX', 'ranking': 'net_buy', 'maxResults': 20})
+rows = client.dataset(run['defaultDatasetId']).list_items().items
+```
+
 ---
 
 ## Fundamental & Financial Statement Data
